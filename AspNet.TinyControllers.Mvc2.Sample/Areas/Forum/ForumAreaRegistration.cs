@@ -20,3 +20,4 @@ namespace AspNet.TinyControllers.Mvc2.Sample.Areas.Forum
         }
     }
 }
+
