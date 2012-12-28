@@ -13,16 +13,16 @@
                 <legend>Account Information</legend>
                 <p>
                     <label for="Username">Username:</label>
-                    <%= Html.TextBoxFor(m => m.Username) %>
-                    <%= Html.ValidationMessageFor(m => m.Username) %>
+                    <%= Html.TextBox("Username") %>
+                    <%= Html.ValidationMessage("Username") %>
                 </p>
                 <p>
                     <label for="Password">Password:</label>
-                    <%= Html.PasswordFor(m => m.Password) %>
-                    <%= Html.ValidationMessageFor(m => m.Password) %>
+                    <%= Html.Password("Password") %>
+                    <%= Html.ValidationMessage("Password") %>
                 </p>
                 <p>
-                    <%= Html.CheckBoxFor(m => m.RememberMe) %>
+                    <%= Html.CheckBox("RememberMe") %>
                     <label class="inline" for="RememberMe">Remember me?</label>
                 </p>
                 <p>

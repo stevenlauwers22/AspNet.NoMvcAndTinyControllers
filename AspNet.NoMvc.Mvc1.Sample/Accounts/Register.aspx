@@ -16,23 +16,23 @@
                 <legend>Account Information</legend>
                 <p>
                     <label for="Username">Username:</label>
-                    <%= Html.TextBoxFor(m => m.Username) %>
-                    <%= Html.ValidationMessageFor(m => m.Username) %>
+                    <%= Html.TextBox("Username") %>
+                    <%= Html.ValidationMessage("Username") %>
                 </p>
                 <p>
                     <label for="Email">Email:</label>
-                    <%= Html.TextBoxFor(m => m.Email) %>
-                    <%= Html.ValidationMessageFor(m => m.Email) %>
+                    <%= Html.TextBox("Email") %>
+                    <%= Html.ValidationMessage("Email") %>
                 </p>
                 <p>
                     <label for="Password">Password:</label>
-                    <%= Html.PasswordFor(m => m.Password) %>
-                    <%= Html.ValidationMessageFor(m => m.Password) %>
+                    <%= Html.Password("Password") %>
+                    <%= Html.ValidationMessage("Password") %>
                 </p>
                 <p>
                     <label for="ConfirmPassword">Confirm password:</label>
-                    <%= Html.PasswordFor(m => m.ConfirmPassword) %>
-                    <%= Html.ValidationMessageFor(m => m.ConfirmPassword) %>
+                    <%= Html.Password("ConfirmPassword") %>
+                    <%= Html.ValidationMessage("ConfirmPassword") %>
                 </p>
                 <p>
                     <input type="submit" value="Register" />

@@ -7,23 +7,23 @@ using System.Web.Routing;
 namespace AspNet.NoMvc.Mvc2
 {
 	public class NoMvcControllerFactory : DefaultControllerFactory
-	{
-		private readonly string _baseNamespace;
-	    private readonly string _controllerNamingPattern;
+    {
+        private readonly INoMvcControllerNameResolver _controllerNameResolver;
 
-        public NoMvcControllerFactory(string baseNamespace)
-            : this(baseNamespace, null)
+        public NoMvcControllerFactory()
+            : this(null)
         {
         }
 
-	    public NoMvcControllerFactory(string baseNamespace, string controllerNamingPattern)
-		{
-            if (string.IsNullOrEmpty(baseNamespace))
-				throw new ArgumentNullException("baseNamespace");
-            
-			_baseNamespace = baseNamespace;
-		    _controllerNamingPattern = controllerNamingPattern ?? "_";
-		}
+        public NoMvcControllerFactory(INoMvcControllerNameResolver controllerNameResolver)
+        {
+            _controllerNameResolver = controllerNameResolver ?? new NoMvcControllerNameDefaultResolver();
+        }
+
+        public INoMvcControllerNameResolver ControllerNameResolver
+        {
+            get { return _controllerNameResolver; }
+        }
 
 		protected override Type GetControllerType(RequestContext requestContext, string controllerName)
 		{
@@ -58,14 +58,9 @@ namespace AspNet.NoMvc.Mvc2
                         }
 					}
 				}
-				else
-				{
-					namespaces = new List<string> {_baseNamespace + "." + controllerName};
-					requestContext.RouteData.DataTokens["Namespaces"] = namespaces;
-				}
             }
 
-            var controllerNameFormatted = string.Format(_controllerNamingPattern, controllerName);
+            var controllerNameFormatted = _controllerNameResolver.Resolve(controllerName);
             var controllerType = base.GetControllerType(requestContext, controllerNameFormatted);
             if (controllerType != null)
                 return controllerType;

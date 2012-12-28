@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,6 +30,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -42,8 +44,26 @@
     <Reference Include="System.Web.Routing" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="INoMvcControllerBuilderExtensions.cs" />
+    <Compile Include="INoMvcViewEngineCollectionExtensions.cs" />
+    <Compile Include="INoMvcViewEngineExtensions.cs" />
+    <Compile Include="INoMvcViewLocationFormatsProvider.cs" />
+    <Compile Include="NoMvcControllerBuilderEmptyExtensions.cs" />
+    <Compile Include="NoMvcControllerBuilderExtensions.cs" />
+    <Compile Include="NoMvcControllerBuilderExtensionsFactory.cs" />
     <Compile Include="NoMvcControllerFactory.cs" />
-    <Compile Include="NoMvcViewEngine.cs" />
+    <Compile Include="NoMvcControllerNameDefaultResolver.cs" />
+    <Compile Include="NoMvcControllerNameResolver.cs" />
+    <Compile Include="NoMvcControllerNameUnderscoreResolver.cs" />
+    <Compile Include="NoMvcRazorViewEngine.cs" />
+    <Compile Include="NoMvcViewEngineCollectionEmptyExtensions.cs" />
+    <Compile Include="NoMvcViewEngineCollectionExtensions.cs" />
+    <Compile Include="NoMvcViewEngineCollectionExtensionsFactory.cs" />
+    <Compile Include="NoMvcViewEngineEmptyExtensions.cs" />
+    <Compile Include="NoMvcViewEngineExtensions.cs" />
+    <Compile Include="NoMvcViewEngineExtensionsFactory.cs" />
+    <Compile Include="NoMvcViewLocationFormatsDefaultProvider.cs" />
+    <Compile Include="NoMvcWebFormViewEngine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

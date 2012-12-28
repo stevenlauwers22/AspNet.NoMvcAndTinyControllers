@@ -32,7 +32,7 @@ namespace AspNet.NoMvcAndTinyController.Sample
 	    private static void RegisterViewEngine()
 	    {
 	        ViewEngines.Engines.Clear();
-	        ViewEngines.Engines.Add(new NoMvcViewEngine());
+            ViewEngines.Engines.Add(new NoMvcWebFormViewEngine());
 	    }
 	}
 }

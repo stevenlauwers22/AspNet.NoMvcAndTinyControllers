@@ -16,18 +16,18 @@
                 <legend>Account Information</legend>
                 <p>
                     <label for="CurrentPassword">Current password:</label>
-                    <%= Html.PasswordFor(m => m.CurrentPassword) %>
-                    <%= Html.ValidationMessageFor(m => m.CurrentPassword) %>
+                    <%= Html.Password("CurrentPassword") %>
+                    <%= Html.ValidationMessage("CurrentPassword") %>
                 </p>
                 <p>
                     <label for="NewPassword">New password:</label>
-                    <%= Html.PasswordFor(m => m.NewPassword) %>
-                    <%= Html.ValidationMessageFor(m => m.NewPassword) %>
+                    <%= Html.Password("NewPassword") %>
+                    <%= Html.ValidationMessage("NewPassword") %>
                 </p>
                 <p>
                     <label for="ConfirmPassword">Confirm new password:</label>
-                    <%= Html.PasswordFor(m => m.ConfirmPassword) %>
-                    <%= Html.ValidationMessageFor(m => m.ConfirmPassword) %>
+                    <%= Html.Password("ConfirmPassword") %>
+                    <%= Html.ValidationMessage("ConfirmPassword") %>
                 </p>
                 <p>
                     <input type="submit" value="Change Password" />
