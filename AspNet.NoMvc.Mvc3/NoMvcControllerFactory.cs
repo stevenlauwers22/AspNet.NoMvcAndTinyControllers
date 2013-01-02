@@ -65,8 +65,7 @@ namespace AspNet.NoMvc.Mvc3
             if (controllerType != null)
                 return controllerType;
 
-            var baseControllerType = base.GetControllerType(requestContext, controllerName);
-            return baseControllerType;
+            return base.GetControllerType(requestContext, controllerName);
 		}
 	}
 }

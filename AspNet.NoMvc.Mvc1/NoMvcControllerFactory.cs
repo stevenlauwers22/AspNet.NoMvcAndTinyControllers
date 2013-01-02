@@ -65,8 +65,7 @@ namespace AspNet.NoMvc.Mvc1
             if (controllerType != null)
                 return controllerType;
 
-            var baseControllerType = base.GetControllerType(controllerName);
-            return baseControllerType;
+            return base.GetControllerType(controllerName);
         }
 	}
 }

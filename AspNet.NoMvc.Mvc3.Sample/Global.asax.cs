@@ -34,7 +34,7 @@ namespace AspNet.NoMvc.Mvc3.Sample
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional },
                 new[] { "AspNet.NoMvc.Mvc3.Sample" });
 
-            RouteTable.Routes.RouteExistingFiles = true;
+            RouteTable.Routes.RouteExistingFiles = false;
         }
 
         private static void RegisterControllerFactory()

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using MvcIntegrationTestFramework.Hosting;
 using Xunit;
 using Xunit.Extensions;
@@ -36,19 +35,6 @@ namespace AspNet.NoMvc.Mvc3.Tests
                 Assert.Equal(expectedAction, actionDescriptor.ActionName);
                 Assert.Equal(expectedController, controllerDescriptor.ControllerType);
             });
-        }
-
-        public static IEnumerable<object[]> NoMvcTestData
-        {
-            get
-            {
-                yield return new object[] { "", "Index", typeof(Sample.Home._Controller) };
-                yield return new object[] { "Home/Index", "Index", typeof(Sample.Home._Controller) };
-                yield return new object[] { "Accounts/Index", "Index", typeof(Sample.Accounts._Controller) };
-                yield return new object[] { "Administration/Home/Index", "Index", typeof(Sample.Administration.Home._Controller) };
-                yield return new object[] { "Forum/Home/Index", "Index", typeof(Sample.Forum.Home._Controller) };
-                yield return new object[] { "Forum/NewThread/Index", "Index", typeof(Sample.Forum.NewThread._Controller) };
-            }
         }
     }
 }

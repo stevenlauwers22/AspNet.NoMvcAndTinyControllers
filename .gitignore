@@ -79,3 +79,9 @@
 /AspNet.TinyControllers.Mvc3/AspNet.TinyControllers.Mvc3.csproj.DotSettings.user
 /AspNet.TinyControllers.Mvc4.Sample/AspNet.TinyControllers.Mvc4.Sample.csproj.DotSettings.user
 /AspNet.TinyControllers.Mvc4/AspNet.TinyControllers.Mvc4.csproj.DotSettings.user
+
+/Article.txt
+/AspNet.NoMvc.Mvc1.Tests/bin
+/AspNet.NoMvc.Mvc1.Tests/obj
+/AspNet.NoMvc.Mvc2.Tests/obj
+/AspNet.NoMvc.Mvc2.Tests/bin

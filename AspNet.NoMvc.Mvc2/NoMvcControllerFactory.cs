@@ -26,7 +26,7 @@ namespace AspNet.NoMvc.Mvc2
         }
 
 		protected override Type GetControllerType(RequestContext requestContext, string controllerName)
-		{
+        {
 			if (requestContext != null)
 			{
 				var namespaces = requestContext.RouteData.DataTokens["Namespaces"];
@@ -65,8 +65,7 @@ namespace AspNet.NoMvc.Mvc2
             if (controllerType != null)
                 return controllerType;
 
-            var baseControllerType = base.GetControllerType(requestContext, controllerName);
-            return baseControllerType;
+            return base.GetControllerType(requestContext, controllerName);
 		}
 	}
 }

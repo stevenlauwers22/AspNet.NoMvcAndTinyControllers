@@ -33,7 +33,7 @@ namespace AspNet.NoMvc.Mvc1.Sample
                 new { controller = "Home", action = "Index", id = "" },
                 new[] { "AspNet.NoMvc.Mvc1.Sample" });
 
-            RouteTable.Routes.RouteExistingFiles = true;
+            RouteTable.Routes.RouteExistingFiles = false;
         }
 
         private static void RegisterControllerFactory()
