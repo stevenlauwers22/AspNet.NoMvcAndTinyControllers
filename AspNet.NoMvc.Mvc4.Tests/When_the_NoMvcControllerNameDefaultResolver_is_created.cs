@@ -1,9 +1,10 @@
 ﻿using System;
+using AspNet.NoMvc.Mvc4.Tests.TestUtils;
 using Xunit;
 
 namespace AspNet.NoMvc.Mvc4.Tests
 {
-    public class When_the_NoMvcControllerNameDefaultResolver_is_created
+    public class When_the_NoMvcControllerNameDefaultResolver_is_created : NoMvcTest
     {
         [Fact]
         public void Is_should_use_the_default_pattern()

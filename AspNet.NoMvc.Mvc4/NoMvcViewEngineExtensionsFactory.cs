@@ -1,21 +1,24 @@
-using System;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace AspNet.NoMvc.Mvc4
 {
     public static class NoMvcViewEngineExtensionsFactory
     {
-        internal static Func<VirtualPathProviderViewEngine, INoMvcViewEngineExtensions> CreateNoMvcViewEngineExtensions = viewEngine =>
-        {
-            if (viewEngine == null)
-                return new NoMvcViewEngineEmptyExtensions();
-
-            return new NoMvcViewEngineExtensions(viewEngine);
-        };
-
         public static INoMvcViewEngineExtensions NoMvc(this VirtualPathProviderViewEngine viewEngine)
         {
-            return CreateNoMvcViewEngineExtensions(viewEngine);
+            INoMvcViewLocationFormatsProvider viewLocationFormatsProvider = null;
+            if (viewEngine != null && NoMvcConfiguration.Current.NoMvcViewLocationFormatsProvidersRegistry != null)
+            {
+                var viewLocationFormatsProviderFunc = NoMvcConfiguration.Current.NoMvcViewLocationFormatsProvidersRegistry
+                    .FirstOrDefault(kvp => kvp.Key.IsInstanceOfType(viewEngine))
+                    .Value;
+
+                if (viewLocationFormatsProviderFunc != null)
+                    viewLocationFormatsProvider = viewLocationFormatsProviderFunc();
+            }
+
+            return NoMvcConfiguration.Current.NoMvcViewEngineExtensionsFunc(viewEngine, viewLocationFormatsProvider);
         }
     }
 }

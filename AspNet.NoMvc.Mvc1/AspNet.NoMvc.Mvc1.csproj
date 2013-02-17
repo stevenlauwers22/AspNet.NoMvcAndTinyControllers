@@ -44,10 +44,16 @@
     <Reference Include="System.Web.Routing" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="INoMvcConfigurationBuilder.cs" />
     <Compile Include="INoMvcControllerBuilderExtensions.cs" />
     <Compile Include="INoMvcViewEngineCollectionExtensions.cs" />
     <Compile Include="INoMvcViewEngineExtensions.cs" />
     <Compile Include="INoMvcViewLocationFormatsProvider.cs" />
+    <Compile Include="NoMvc.cs" />
+    <Compile Include="NoMvcConfiguration.cs" />
+    <Compile Include="NoMvcConfigurationBuilder.cs" />
+    <Compile Include="NoMvcConfigurationException.cs" />
+    <Compile Include="NoMvcConfigurationWithDefaults.cs" />
     <Compile Include="NoMvcControllerBuilderEmptyExtensions.cs" />
     <Compile Include="NoMvcControllerBuilderExtensions.cs" />
     <Compile Include="NoMvcControllerBuilderExtensionsFactory.cs" />
@@ -60,7 +66,7 @@
     <Compile Include="NoMvcViewEngineCollectionExtensionsFactory.cs" />
     <Compile Include="NoMvcViewEngineEmptyExtensions.cs" />
     <Compile Include="NoMvcViewEngineExtensionsFactory.cs" />
-    <Compile Include="NoMvcViewLocationFormatsDefaultProvider.cs" />
+    <Compile Include="NoMvcWebFormViewLocationFormatsProvider.cs" />
     <Compile Include="NoMvcWebFormViewEngine.cs" />
     <Compile Include="NoMvcViewEngineExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

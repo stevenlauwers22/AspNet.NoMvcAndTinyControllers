@@ -14,8 +14,7 @@ namespace AspNet.NoMvc.Mvc4.Sample
         public static void Configure()
         {
             RegisterRoutes();
-            RegisterControllerFactory();
-            RegisterViewEngine();
+            RegisterNoMvc();
         }
 
         private static void RegisterRoutes()
@@ -34,19 +33,13 @@ namespace AspNet.NoMvc.Mvc4.Sample
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional },
                 new[] { "AspNet.NoMvc.Mvc4.Sample" });
 
-            RouteTable.Routes.RouteExistingFiles = false;
-        }
-
-        private static void RegisterControllerFactory()
-        {
             // If you don't specify the namespace when registering your routes, you should register a default namespace with the current controller builder
             // ControllerBuilder.Current.DefaultNamespaces.Add("AspNet.NoMvc.Mvc4.Sample");
-            ControllerBuilder.Current.NoMvc().SetNoMvcControllerFactory(new NoMvcControllerNameUnderscoreResolver());
         }
 
-	    private static void RegisterViewEngine()
+        private static void RegisterNoMvc()
         {
-            ViewEngines.Engines.NoMvc().RegisterNoMvcViewLocationFormats();
-	    }
+            NoMvc.Configure().Apply();
+        }
 	}
 }

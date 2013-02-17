@@ -27,6 +27,9 @@ namespace AspNet.NoMvc.Mvc4
 
         public string Resolve(string controllerName)
         {
+            if (string.IsNullOrEmpty(controllerName))
+                return null;
+
             return string.Format(_pattern, controllerName);
         }
     }

@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using AspNet.NoMvc.Mvc4.Tests.TestUtils;
 using Moq;
 using Xunit;
 
 namespace AspNet.NoMvc.Mvc4.Tests
 {
-    public class When_the_NoMvcViewEngineExtensions_is_told_to_RegisterNoMvcViewLocationFormats
+    public class When_the_NoMvcViewEngineExtensions_is_told_to_RegisterNoMvcViewLocationFormats : NoMvcTest
     {
         [Fact]
         public void It_should_combine_the_NoMvc_view_location_formats_with_the_standard_view_location_formats_into_a_unique_list()

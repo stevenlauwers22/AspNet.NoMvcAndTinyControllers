@@ -1,10 +1,11 @@
 ﻿using System;
+using AspNet.NoMvc.Mvc4.Tests.TestUtils;
 using Moq;
 using Xunit;
 
 namespace AspNet.NoMvc.Mvc4.Tests
 {
-    public class When_the_NoMvcControllerFactory_is_created
+    public class When_the_NoMvcControllerFactory_is_created : NoMvcTest
     {
         [Fact]
         public void It_should_use_the_specified_NoMvcControllerNameResolver()

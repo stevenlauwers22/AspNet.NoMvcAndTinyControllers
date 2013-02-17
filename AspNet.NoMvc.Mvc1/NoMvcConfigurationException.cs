@@ -1,0 +1,16 @@
+using System;
+
+namespace AspNet.NoMvc.Mvc1
+{
+    public class NoMvcConfigurationException : ApplicationException
+    {
+    }
+
+    public class NoMvcConfigurationNotSetException : NoMvcConfigurationException
+    {
+    }
+
+    public class NoMvcConfigurationNotValidException : NoMvcConfigurationException
+    {
+    }
+}

@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Web.Mvc;
+using AspNet.NoMvc.Mvc4.Tests.TestUtils;
 using Moq;
 using Xunit;
 
 namespace AspNet.NoMvc.Mvc4.Tests
 {
-    public class When_the_NoMvcViewEngineCollectionExtensions_is_told_to_RegisterNoMvcViewLocationFormats
+    public class When_the_NoMvcViewEngineCollectionExtensions_is_told_to_RegisterNoMvcViewLocationFormats : NoMvcTest
     {
         [Fact]
         public void It_should_register_the_NoMvc_view_location_formats_for_all_ViewEngines_that_have_the_VirtualPathProviderViewEngine_as_base_class()
@@ -23,19 +24,19 @@ namespace AspNet.NoMvc.Mvc4.Tests
             var viewEngine1Extensions = new Mock<INoMvcViewEngineExtensions>();
             var viewEngine2Extensions = new Mock<INoMvcViewEngineExtensions>();
             var viewEngine3Extensions = new Mock<INoMvcViewEngineExtensions>();
-            NoMvcViewEngineExtensionsFactory.CreateNoMvcViewEngineExtensions = viewEngine =>
-                {
-                    if (viewEngine == viewEngine1.Object)
-                        return viewEngine1Extensions.Object;
+            NoMvcConfiguration.Current.NoMvcViewEngineExtensionsFunc = (ve, vlfp) =>
+            {
+                if (ve == viewEngine1.Object)
+                    return viewEngine1Extensions.Object;
 
-                    if (viewEngine == viewEngine2.Object)
-                        return viewEngine2Extensions.Object;
+                if (ve == viewEngine2.Object)
+                    return viewEngine2Extensions.Object;
 
-                    if (viewEngine == viewEngine3.Object)
-                        return viewEngine3Extensions.Object;
+                if (ve == viewEngine3.Object)
+                    return viewEngine3Extensions.Object;
 
-                    throw new InvalidOperationException();
-                };
+                throw new InvalidOperationException();
+            };
 
             var viewEngineCollectionExtensions = new NoMvcViewEngineCollectionExtensions(viewEngineCollection);
 

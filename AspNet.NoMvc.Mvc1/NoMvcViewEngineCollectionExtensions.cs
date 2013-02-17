@@ -25,10 +25,10 @@ namespace AspNet.NoMvc.Mvc1
             foreach (var viewEngine in _viewEngineCollection)
             {
                 var virtualPathProviderViewEngine = viewEngine as VirtualPathProviderViewEngine;
-                if (virtualPathProviderViewEngine != null)
-                {
-                    virtualPathProviderViewEngine.NoMvc().RegisterNoMvcViewLocationFormats();
-                }
+                if (virtualPathProviderViewEngine == null)
+                    continue;
+
+                virtualPathProviderViewEngine.NoMvc().RegisterNoMvcViewLocationFormats();
             }
         }
     }

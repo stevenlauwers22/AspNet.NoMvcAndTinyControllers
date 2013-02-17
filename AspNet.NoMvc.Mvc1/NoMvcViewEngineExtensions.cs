@@ -10,18 +10,16 @@ namespace AspNet.NoMvc.Mvc1
         private readonly VirtualPathProviderViewEngine _viewEngine;
         private readonly INoMvcViewLocationFormatsProvider _viewLocationFormatsProvider;
 
-        public NoMvcViewEngineExtensions(VirtualPathProviderViewEngine viewEngine)
-            : this(viewEngine, null)
-        {
-        }
-
         public NoMvcViewEngineExtensions(VirtualPathProviderViewEngine viewEngine, INoMvcViewLocationFormatsProvider viewLocationFormatsProvider)
         {
             if (viewEngine == null)
                 throw new ArgumentNullException("viewEngine");
 
+            if (viewLocationFormatsProvider == null)
+                throw new ArgumentNullException("viewLocationFormatsProvider");
+
             _viewEngine = viewEngine;
-            _viewLocationFormatsProvider = viewLocationFormatsProvider ?? new NoMvcViewLocationFormatsDefaultProvider();
+            _viewLocationFormatsProvider = viewLocationFormatsProvider;
         }
 
         public VirtualPathProviderViewEngine ViewEngine
@@ -37,11 +35,11 @@ namespace AspNet.NoMvc.Mvc1
         public void RegisterNoMvcViewLocationFormats()
         {
             // Register No MVC Master Location Formats
-            var masterLocationFormats = _viewLocationFormatsProvider.GetMasterLocationFormats().ToList();
+            var masterLocationFormats = _viewLocationFormatsProvider.GetMasterLocationFormats().Distinct().ToList();
             RegisterNoMvcViewLocationFormats(() => _viewEngine.MasterLocationFormats, formats => _viewEngine.MasterLocationFormats = formats, masterLocationFormats);
 
             // Register No MVC View Location Formats
-            var viewLocationFormats = _viewLocationFormatsProvider.GetViewLocationFormats().ToList();
+            var viewLocationFormats = _viewLocationFormatsProvider.GetViewLocationFormats().Distinct().ToList();
             RegisterNoMvcViewLocationFormats(() => _viewEngine.ViewLocationFormats, formats => _viewEngine.ViewLocationFormats = formats, viewLocationFormats);
             RegisterNoMvcViewLocationFormats(() => _viewEngine.PartialViewLocationFormats, formats => _viewEngine.PartialViewLocationFormats = formats, viewLocationFormats);
         }

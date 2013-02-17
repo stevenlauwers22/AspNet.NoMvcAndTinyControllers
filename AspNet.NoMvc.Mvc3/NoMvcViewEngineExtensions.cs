@@ -10,18 +10,16 @@ namespace AspNet.NoMvc.Mvc3
         private readonly VirtualPathProviderViewEngine _viewEngine;
         private readonly INoMvcViewLocationFormatsProvider _viewLocationFormatsProvider;
 
-        public NoMvcViewEngineExtensions(VirtualPathProviderViewEngine viewEngine)
-            : this(viewEngine, null)
-        {
-        }
-
         public NoMvcViewEngineExtensions(VirtualPathProviderViewEngine viewEngine, INoMvcViewLocationFormatsProvider viewLocationFormatsProvider)
         {
             if (viewEngine == null)
                 throw new ArgumentNullException("viewEngine");
 
+            if (viewLocationFormatsProvider == null)
+                throw new ArgumentNullException("viewLocationFormatsProvider");
+
             _viewEngine = viewEngine;
-            _viewLocationFormatsProvider = viewLocationFormatsProvider ?? new NoMvcViewLocationFormatsDefaultProvider();
+            _viewLocationFormatsProvider = viewLocationFormatsProvider;
         }
 
         public VirtualPathProviderViewEngine ViewEngine

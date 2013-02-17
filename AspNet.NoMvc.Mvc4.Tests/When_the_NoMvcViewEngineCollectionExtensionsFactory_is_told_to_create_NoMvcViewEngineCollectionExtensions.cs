@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Web.Mvc;
+using AspNet.NoMvc.Mvc4.Tests.TestUtils;
 using Moq;
 using Xunit;
 
 namespace AspNet.NoMvc.Mvc4.Tests
 {
-    public class When_the_NoMvcViewEngineCollectionExtensionsFactory_is_told_to_create_NoMvcViewEngineCollectionExtensions
+    public class When_the_NoMvcViewEngineCollectionExtensionsFactory_is_told_to_create_NoMvcViewEngineCollectionExtensions : NoMvcTest
     {
         [Fact]
         public void It_should_return_a_instance_of_NoMvcViewEngineCollectionExtensions_when_the_ViewEngineCollection_is_specified()
@@ -22,7 +23,7 @@ namespace AspNet.NoMvc.Mvc4.Tests
         }
 
         [Fact]
-        public void It_should_return_a_instance_of_NoMvcViewEngineCollectionExtensions_when_the_ViewEngineCollection_is_null()
+        public void It_should_return_a_instance_of_NoMvcViewEngineCollectionEmptyExtensions_when_the_ViewEngineCollection_is_null()
         {
             // Arrange
             var viewEngineCollectionExtensionsFunc = new Func<ViewEngineCollection, INoMvcViewEngineCollectionExtensions>(vec => vec.NoMvc());

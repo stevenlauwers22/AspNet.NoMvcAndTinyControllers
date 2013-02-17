@@ -21,7 +21,7 @@ namespace AspNet.NoMvcAndTinyController.Sample
             RouteTable.Routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             RouteTable.Routes.IgnoreRoute("{*favicon}", new { favicon = @"(.*/)?favicon.ico(/.*)?" });
             RouteTable.Routes.MapRoute("Default", "{controller}/{action}/{id}", new { id = UrlParameter.Optional });
-            RouteTable.Routes.MapRoute("Root", "", new { controller = "Home", action = "Index", id = UrlParameter.Optional });
+            RouteTable.Routes.MapRoute("Root", "", new { controller = "Products", action = "Index", id = UrlParameter.Optional });
         }
 
         private static void RegisterControllerFactory()

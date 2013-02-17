@@ -1,9 +1,10 @@
 ﻿using System;
+using AspNet.NoMvc.Mvc4.Tests.TestUtils;
 using Xunit;
 
 namespace AspNet.NoMvc.Mvc4.Tests
 {
-    public class When_the_NoMvcControllerNameUnderscoreResolver_is_told_to_Resolve
+    public class When_the_NoMvcControllerNameUnderscoreResolver_is_told_to_Resolve : NoMvcTest
     {
         [Fact]
         public void It_should_return_null_when_resolving_null()

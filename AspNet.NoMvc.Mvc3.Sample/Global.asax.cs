@@ -14,11 +14,10 @@ namespace AspNet.NoMvc.Mvc3.Sample
         public static void Configure()
         {
             RegisterRoutes();
-            RegisterControllerFactory();
-            RegisterViewEngine();
+            RegisterNoMvc();
         }
 
-        private static void RegisterRoutes()
+	    private static void RegisterRoutes()
         {
             AreaRegistration.RegisterAllAreas();
             RouteTable.Routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
@@ -34,19 +33,13 @@ namespace AspNet.NoMvc.Mvc3.Sample
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional },
                 new[] { "AspNet.NoMvc.Mvc3.Sample" });
 
-            RouteTable.Routes.RouteExistingFiles = false;
-        }
-
-        private static void RegisterControllerFactory()
-        {
             // If you don't specify the namespace when registering your routes, you should register a default namespace with the current controller builder
             // ControllerBuilder.Current.DefaultNamespaces.Add("AspNet.NoMvc.Mvc3.Sample");
-            ControllerBuilder.Current.NoMvc().SetNoMvcControllerFactory(new NoMvcControllerNameUnderscoreResolver());
         }
 
-	    private static void RegisterViewEngine()
+        private static void RegisterNoMvc()
         {
-            ViewEngines.Engines.NoMvc().RegisterNoMvcViewLocationFormats();
-	    }
+            NoMvc.Configure().UsingDefaults().Apply();
+        }
 	}
 }
