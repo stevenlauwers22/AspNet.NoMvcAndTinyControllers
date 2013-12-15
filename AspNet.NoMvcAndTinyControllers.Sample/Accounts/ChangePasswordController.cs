@@ -1,12 +1,12 @@
 using System;
 using System.Globalization;
 using System.Web.Mvc;
-using AspNet.TinyControllers.Mvc2;
+using AspNet.NoMvc.Mvc2;
 
 namespace AspNet.NoMvcAndTinyController.Sample.Accounts
 {
     [HandleError]
-    public class ChangePasswordController : TinyController
+    public class ChangePasswordController : NoMvcTinyController
 	{
         [Authorize]
 		public ActionResult Get()

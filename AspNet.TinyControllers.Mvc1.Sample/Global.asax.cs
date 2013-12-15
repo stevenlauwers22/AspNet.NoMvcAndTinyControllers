@@ -8,6 +8,11 @@ namespace AspNet.TinyControllers.Mvc1.Sample
     {
         protected void Application_Start()
         {
+            Configure();
+        }
+
+        public static void Configure()
+        {
             RegisterRoutes();
             RegisterControllerFactory();
         }
@@ -16,12 +21,19 @@ namespace AspNet.TinyControllers.Mvc1.Sample
         {
             RouteTable.Routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             RouteTable.Routes.IgnoreRoute("{*favicon}", new { favicon = @"(.*/)?favicon.ico(/.*)?" });
-            RouteTable.Routes.MapRoute("Default", "{controller}/{action}/{id}", new { controller = "Home", action = "Index", id = "" });
+            RouteTable.Routes.MapRoute(
+                "Default",
+                "{controller}/{action}/{id}",
+                new { id = "" });
+            RouteTable.Routes.MapRoute(
+                "Root",
+                "",
+                new { controller = "Home", action = "Index", id = "" });
         }
 
         private static void RegisterControllerFactory()
         {
-            ControllerBuilder.Current.SetControllerFactory(new TinyControllerFactory("AspNet.TinyControllers.Mvc1.Sample.Controllers"));
+            ControllerBuilder.Current.SetControllerFactory(new TinyControllerFactory());
         }
 	}
 }

@@ -38,7 +38,7 @@ namespace AspNet.NoMvc.Mvc1.Sample
 
         private static void RegisterNoMvc()
         {
-            NoMvc.Configure().UsingDefaults().Apply();
+            NoMvc.Configure().Apply();
         }
 	}
 }

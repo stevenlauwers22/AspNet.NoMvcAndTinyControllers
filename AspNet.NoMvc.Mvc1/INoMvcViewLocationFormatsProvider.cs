@@ -6,7 +6,5 @@ namespace AspNet.NoMvc.Mvc1
     {
         IEnumerable<string> GetMasterLocationFormats();
         IEnumerable<string> GetViewLocationFormats();
-        IEnumerable<string> GetAreaMasterLocationFormats();
-        IEnumerable<string> GetAreaViewLocationFormats();
     }
 }

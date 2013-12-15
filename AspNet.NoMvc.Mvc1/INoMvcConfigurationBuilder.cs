@@ -1,8 +1,10 @@
+using System;
+
 namespace AspNet.NoMvc.Mvc1
 {
     public interface INoMvcConfigurationBuilder
     {
-        INoMvcConfigurationBuilder UsingDefaults();
+        INoMvcConfigurationBuilder SetControllerFactory(Action<INoMvcConfigurationBuilderForControllerFactory> controllerFactoryConfiguration);
         void Apply();
     }
 }

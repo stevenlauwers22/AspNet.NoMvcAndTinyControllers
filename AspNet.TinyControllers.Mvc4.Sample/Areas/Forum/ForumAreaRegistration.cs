@@ -14,7 +14,7 @@ namespace AspNet.TinyControllers.Mvc4.Sample.Areas.Forum
             context.MapRoute(
                 "Forum_default",
                 "Forum/{controller}/{action}/{id}",
-                new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                new { id = UrlParameter.Optional },
                 new[] { "AspNet.TinyControllers.Mvc4.Sample.Areas.Forum.Controllers" }
             );
         }

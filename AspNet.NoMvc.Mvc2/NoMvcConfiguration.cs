@@ -7,55 +7,46 @@ namespace AspNet.NoMvc.Mvc2
 {
     public class NoMvcConfiguration
     {
-        private static NoMvcConfiguration _configuration;
-
-        public static NoMvcConfiguration Current { 
-            get
-            {
-                if (_configuration == null)
-                    throw new NoMvcConfigurationNotSetException();
-
-                return _configuration;
-            }
-            internal set
-            {
-                if (value == null)
-                    throw new NoMvcConfigurationNotSetException();
-
-                if (!value.IsValid)
-                    throw new NoMvcConfigurationNotValidException();
-
-                _configuration = value;
-            }
-        }
-
-        public bool IsValid
+        public NoMvcConfiguration()
         {
-            get
+            NoMvcViewEngineCollectionExtensionsFunc = viewEngineCollection =>
             {
-                if (NoMvcControllerBuilderExtensionsFunc == null)
-                    return false;
-                if (NoMvcViewEngineCollectionExtensionsFunc == null)
-                    return false;
-                if (NoMvcViewEngineExtensionsFunc == null)
-                    return false;
+                if (viewEngineCollection == null)
+                    return new NoMvcViewEngineCollectionEmptyExtensions();
 
-                return true;
-            }
+                return new NoMvcViewEngineCollectionExtensions(viewEngineCollection);
+            };
+
+            NoMvcViewEngineExtensionsFunc = (viewEngine, viewLocationFormatsProvider) =>
+            {
+                if (viewEngine == null)
+                    return new NoMvcViewEngineEmptyExtensions();
+
+                if (viewLocationFormatsProvider == null)
+                    return new NoMvcViewEngineEmptyExtensions();
+
+                return new NoMvcViewEngineExtensions(viewEngine, viewLocationFormatsProvider);
+            };
+
+            NoMvcViewLocationFormatsProvidersRegistry = new Dictionary<Type, Func<INoMvcViewLocationFormatsProvider>>
+            {
+                {typeof (WebFormViewEngine), () => new NoMvcViewLocationFormatsProviderForWebForms()}
+            };
         }
 
+        public Func<ViewEngineCollection, INoMvcViewEngineCollectionExtensions> NoMvcViewEngineCollectionExtensionsFunc { get; internal set; }
+        public Func<VirtualPathProviderViewEngine, INoMvcViewLocationFormatsProvider, INoMvcViewEngineExtensions> NoMvcViewEngineExtensionsFunc { get; internal set; }
+        public IDictionary<Type, Func<INoMvcViewLocationFormatsProvider>> NoMvcViewLocationFormatsProvidersRegistry { get; internal set; }
+        public INoMvcControllerFactory ControllerFactory { get; internal set; }
+        public static NoMvcConfiguration Current { get; private set; }
+        
         public void Apply()
         {
             Current = this;
 
             RouteTable.Routes.RouteExistingFiles = false;
-            ControllerBuilder.Current.NoMvc().SetNoMvcControllerFactory(new NoMvcControllerNameUnderscoreResolver());
+            ControllerBuilder.Current.SetControllerFactory(ControllerFactory);
             ViewEngines.Engines.NoMvc().RegisterNoMvcViewLocationFormats();
         }
-
-        public Func<ControllerBuilder, INoMvcControllerBuilderExtensions> NoMvcControllerBuilderExtensionsFunc { get; internal set; }
-        public Func<ViewEngineCollection, INoMvcViewEngineCollectionExtensions> NoMvcViewEngineCollectionExtensionsFunc { get; internal set; }
-        public Func<VirtualPathProviderViewEngine, INoMvcViewLocationFormatsProvider, INoMvcViewEngineExtensions> NoMvcViewEngineExtensionsFunc { get; internal set; }
-        public IDictionary<Type, Func<INoMvcViewLocationFormatsProvider>> NoMvcViewLocationFormatsProvidersRegistry { get; internal set; }
     }
 }

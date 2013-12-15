@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace AspNet.NoMvc.Mvc3
+namespace AspNet.NoMvc.Mvc2
 {
-    public class NoMvcWebFormViewLocationFormatsProvider : INoMvcViewLocationFormatsProvider
+    public class NoMvcViewLocationFormatsProviderForWebForms : INoMvcViewLocationFormatsProvider
     {
         public IEnumerable<string> GetMasterLocationFormats()
         {

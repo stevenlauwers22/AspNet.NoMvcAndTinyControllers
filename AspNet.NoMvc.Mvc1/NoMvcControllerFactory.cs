@@ -5,7 +5,7 @@ using System.Web.Mvc;
 
 namespace AspNet.NoMvc.Mvc1
 {
-	public class NoMvcControllerFactory : DefaultControllerFactory
+    public class NoMvcControllerFactory : DefaultControllerFactory, INoMvcControllerFactory
     {
         private readonly INoMvcControllerNameResolver _controllerNameResolver;
 
@@ -92,11 +92,6 @@ namespace AspNet.NoMvc.Mvc1
                         return controllerTypeInDefaultNamespace;
                 }
             }
-
-            // If all else fails, search every namespace
-            var controllerTypeInAllNamespaces = base.GetControllerType(controllerNameFormatted);
-            if (controllerTypeInAllNamespaces != null)
-                return controllerTypeInAllNamespaces;
 
             return base.GetControllerType(controllerName);
 		}

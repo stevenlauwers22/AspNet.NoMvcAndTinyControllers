@@ -1,17 +1,24 @@
+using System;
+
 namespace AspNet.NoMvc.Mvc1
 {
     public class NoMvcConfigurationBuilder : INoMvcConfigurationBuilder
     {
-        private NoMvcConfiguration _configuration;
+        private readonly NoMvcConfiguration _configuration;
 
         public NoMvcConfigurationBuilder()
         {
             _configuration = new NoMvcConfiguration();
         }
 
-        public INoMvcConfigurationBuilder UsingDefaults()
+        public INoMvcConfigurationBuilder SetControllerFactory(Action<INoMvcConfigurationBuilderForControllerFactory> controllerFactoryConfiguration)
         {
-            _configuration = new NoMvcConfigurationWithDefaults();
+            var controllerFactoryBuilder = new NoMvcConfigurationBuilderForControllerFactory();
+            controllerFactoryConfiguration(controllerFactoryBuilder);
+
+            var controllerFactory = controllerFactoryBuilder.GetResult();
+            _configuration.ControllerFactory = controllerFactory;
+
             return this;
         }
 

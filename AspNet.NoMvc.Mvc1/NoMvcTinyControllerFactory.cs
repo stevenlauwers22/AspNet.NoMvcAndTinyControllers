@@ -4,12 +4,31 @@ using System.Linq;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace AspNet.TinyControllers.Mvc4
+namespace AspNet.NoMvc.Mvc1
 {
-	public class TinyControllerFactory : DefaultControllerFactory
+	public class NoMvcTinyControllerFactory : DefaultControllerFactory, INoMvcControllerFactory
 	{
-		protected override Type GetControllerType(RequestContext requestContext, string controllerName)
+        private readonly INoMvcControllerNameResolver _controllerNameResolver;
+
+        public NoMvcTinyControllerFactory()
+            : this(null)
         {
+        }
+
+        public NoMvcTinyControllerFactory(INoMvcControllerNameResolver controllerNameResolver)
+        {
+            _controllerNameResolver = controllerNameResolver ?? new NoMvcControllerNameDefaultResolver();
+        }
+        
+        public INoMvcControllerNameResolver ControllerNameResolver
+        {
+            get { return _controllerNameResolver; }
+        }
+
+		protected override Type GetControllerType(string controllerName)
+		{
+		    var requestContext = RequestContext;
+            var controllerNameFormatted = _controllerNameResolver.Resolve(controllerName);
             if (requestContext != null)
             {
                 // First search in the current route's namespace collection
@@ -38,11 +57,11 @@ namespace AspNet.TinyControllers.Mvc4
 
                         // Get the controller type from the current route's namespace collection
                         var action = requestContext.RouteData.GetRequiredString("action");
-                        var controllerActionTypeInRoutesNamespace = base.GetControllerType(requestContext, action);
+                        var controllerActionTypeInRoutesNamespace = base.GetControllerType(action);
                         if (controllerActionTypeInRoutesNamespace != null)
                             return controllerActionTypeInRoutesNamespace;
 
-                        var controllerTypeInRoutesNamespace = base.GetControllerType(requestContext, controllerName);
+                        var controllerTypeInRoutesNamespace = base.GetControllerType(controllerNameFormatted);
                         if (controllerTypeInRoutesNamespace != null)
                             return controllerTypeInRoutesNamespace;
 
@@ -75,17 +94,17 @@ namespace AspNet.TinyControllers.Mvc4
 
                     // Get the controller type from the application's default namespace collection
                     var action = requestContext.RouteData.GetRequiredString("action");
-                    var controllerTypeActionInDefaultNamespace = base.GetControllerType(requestContext, action);
+                    var controllerTypeActionInDefaultNamespace = base.GetControllerType(action);
                     if (controllerTypeActionInDefaultNamespace != null)
                         return controllerTypeActionInDefaultNamespace;
 
-                    var controllerTypeInDefaultNamespace = base.GetControllerType(requestContext, controllerName);
+                    var controllerTypeInDefaultNamespace = base.GetControllerType(controllerNameFormatted);
                     if (controllerTypeInDefaultNamespace != null)
                         return controllerTypeInDefaultNamespace;
                 }
             }
 
-            return base.GetControllerType(requestContext, controllerName);
+            return base.GetControllerType(controllerName);
 		}
 	}
 }

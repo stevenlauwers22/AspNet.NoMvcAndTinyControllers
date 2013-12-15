@@ -99,10 +99,6 @@
       <Project>{3c1b69c1-412a-4fec-b997-420285ce80d9}</Project>
       <Name>AspNet.NoMvc.Mvc2</Name>
     </ProjectReference>
-    <ProjectReference Include="..\AspNet.TinyControllers.Mvc2\AspNet.TinyControllers.Mvc2.csproj">
-      <Project>{f1ecbea5-3fc5-4ab8-8d80-b133be6c5d00}</Project>
-      <Name>AspNet.TinyControllers.Mvc2</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -2,7 +2,6 @@
 using System.Web.Mvc;
 using System.Web.Routing;
 using AspNet.NoMvc.Mvc2;
-using AspNet.TinyControllers.Mvc2;
 
 namespace AspNet.NoMvcAndTinyController.Sample
 {
@@ -26,7 +25,7 @@ namespace AspNet.NoMvcAndTinyController.Sample
 
         private static void RegisterControllerFactory()
         {
-            ControllerBuilder.Current.SetControllerFactory(new TinyControllerFactory("AspNet.NoMvcAndTinyController.Sample"));
+            ControllerBuilder.Current.SetControllerFactory(new NoMvcTinyControllerFactory("AspNet.NoMvcAndTinyController.Sample"));
         }
 
 	    private static void RegisterViewEngine()

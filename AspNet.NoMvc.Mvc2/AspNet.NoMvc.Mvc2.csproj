@@ -36,6 +36,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.AspNet.Mvc.2\System.Web.Mvc.dll</HintPath>
@@ -45,31 +46,29 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="INoMvcConfigurationBuilder.cs" />
-    <Compile Include="INoMvcControllerBuilderExtensions.cs" />
+    <Compile Include="INoMvcConfigurationBuilderForControllerFactory.cs" />
+    <Compile Include="INoMvcControllerFactory.cs" />
     <Compile Include="INoMvcViewEngineCollectionExtensions.cs" />
     <Compile Include="INoMvcViewEngineExtensions.cs" />
     <Compile Include="INoMvcViewLocationFormatsProvider.cs" />
     <Compile Include="NoMvc.cs" />
     <Compile Include="NoMvcConfiguration.cs" />
     <Compile Include="NoMvcConfigurationBuilder.cs" />
-    <Compile Include="NoMvcConfigurationException.cs" />
-    <Compile Include="NoMvcConfigurationWithDefaults.cs" />
-    <Compile Include="NoMvcControllerBuilderEmptyExtensions.cs" />
-    <Compile Include="NoMvcControllerBuilderExtensions.cs" />
-    <Compile Include="NoMvcControllerBuilderExtensionsFactory.cs" />
+    <Compile Include="NoMvcConfigurationBuilderForControllerFactory.cs" />
     <Compile Include="NoMvcControllerFactory.cs" />
     <Compile Include="NoMvcControllerNameDefaultResolver.cs" />
     <Compile Include="NoMvcControllerNameResolver.cs" />
     <Compile Include="NoMvcControllerNameUnderscoreResolver.cs" />
+    <Compile Include="NoMvcTinyController.cs" />
+    <Compile Include="NoMvcTinyControllerFactory.cs" />
     <Compile Include="NoMvcViewEngineCollectionEmptyExtensions.cs" />
     <Compile Include="NoMvcViewEngineCollectionExtensions.cs" />
     <Compile Include="NoMvcViewEngineCollectionExtensionsFactory.cs" />
     <Compile Include="NoMvcViewEngineEmptyExtensions.cs" />
-    <Compile Include="NoMvcViewEngineExtensionsFactory.cs" />
-    <Compile Include="NoMvcWebFormViewLocationFormatsProvider.cs" />
-    <Compile Include="NoMvcWebFormViewEngine.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="NoMvcViewEngineExtensions.cs" />
+    <Compile Include="NoMvcViewEngineExtensionsFactory.cs" />
+    <Compile Include="NoMvcViewLocationFormatsProviderForWebForms.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -4,12 +4,30 @@ using System.Linq;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace AspNet.TinyControllers.Mvc4
+namespace AspNet.NoMvc.Mvc2
 {
-	public class TinyControllerFactory : DefaultControllerFactory
+	public class NoMvcTinyControllerFactory : DefaultControllerFactory, INoMvcControllerFactory
 	{
+        private readonly INoMvcControllerNameResolver _controllerNameResolver;
+
+        public NoMvcTinyControllerFactory()
+            : this(null)
+        {
+        }
+
+        public NoMvcTinyControllerFactory(INoMvcControllerNameResolver controllerNameResolver)
+        {
+            _controllerNameResolver = controllerNameResolver ?? new NoMvcControllerNameDefaultResolver();
+        }
+        
+        public INoMvcControllerNameResolver ControllerNameResolver
+        {
+            get { return _controllerNameResolver; }
+        }
+
 		protected override Type GetControllerType(RequestContext requestContext, string controllerName)
         {
+            var controllerNameFormatted = _controllerNameResolver.Resolve(controllerName);
             if (requestContext != null)
             {
                 // First search in the current route's namespace collection
@@ -42,7 +60,7 @@ namespace AspNet.TinyControllers.Mvc4
                         if (controllerActionTypeInRoutesNamespace != null)
                             return controllerActionTypeInRoutesNamespace;
 
-                        var controllerTypeInRoutesNamespace = base.GetControllerType(requestContext, controllerName);
+                        var controllerTypeInRoutesNamespace = base.GetControllerType(requestContext, controllerNameFormatted);
                         if (controllerTypeInRoutesNamespace != null)
                             return controllerTypeInRoutesNamespace;
 
@@ -79,7 +97,7 @@ namespace AspNet.TinyControllers.Mvc4
                     if (controllerTypeActionInDefaultNamespace != null)
                         return controllerTypeActionInDefaultNamespace;
 
-                    var controllerTypeInDefaultNamespace = base.GetControllerType(requestContext, controllerName);
+                    var controllerTypeInDefaultNamespace = base.GetControllerType(requestContext, controllerNameFormatted);
                     if (controllerTypeInDefaultNamespace != null)
                         return controllerTypeInDefaultNamespace;
                 }

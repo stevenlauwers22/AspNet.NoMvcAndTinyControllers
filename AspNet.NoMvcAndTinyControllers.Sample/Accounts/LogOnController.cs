@@ -1,11 +1,11 @@
 using System;
 using System.Web.Mvc;
-using AspNet.TinyControllers.Mvc2;
+using AspNet.NoMvc.Mvc2;
 
 namespace AspNet.NoMvcAndTinyController.Sample.Accounts
 {
     [HandleError]
-    public class LogOnController : TinyController
+    public class LogOnController : NoMvcTinyController
     {
 		public ActionResult Get()
 		{

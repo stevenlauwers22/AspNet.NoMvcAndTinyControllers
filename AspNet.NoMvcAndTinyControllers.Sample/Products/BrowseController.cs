@@ -1,10 +1,10 @@
 ﻿using System.Web.Mvc;
-using AspNet.TinyControllers.Mvc2;
+using AspNet.NoMvc.Mvc2;
 
 namespace AspNet.NoMvcAndTinyController.Sample.Products
 {
     [HandleError]
-    public class BrowseController : TinyController
+    public class BrowseController : NoMvcTinyController
     {
         public ActionResult Get()
         {

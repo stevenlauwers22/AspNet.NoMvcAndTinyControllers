@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace AspNet.NoMvc.Mvc1
+namespace AspNet.NoMvc.Mvc3
 {
-    public class NoMvcWebFormViewLocationFormatsProvider : INoMvcViewLocationFormatsProvider
+    public class NoMvcViewLocationFormatsProviderForRazor : INoMvcViewLocationFormatsProvider
     {
         public IEnumerable<string> GetMasterLocationFormats()
         {
@@ -33,8 +33,10 @@ namespace AspNet.NoMvc.Mvc1
                 {
                     return (new List<string>
                     {
-                        "~/{1}/{0}.master", 
-                        "~/Shared/{0}.master"
+                        "~/{1}/{0}.cshtml", 
+                        "~/{1}/{0}.vbhtml", 
+                        "~/Shared/{0}.cshtml",
+                        "~/Shared/{0}.vbhtml"
                     }).AsEnumerable();
                 }
             }
@@ -45,10 +47,10 @@ namespace AspNet.NoMvc.Mvc1
                 {
                     return (new List<string>
                     {
-                        "~/{1}/{0}.aspx", 
-                        "~/{1}/{0}.ascx", 
-                        "~/Shared/{0}.aspx", 
-                        "~/Shared/{0}.ascx"
+                        "~/{1}/{0}.cshtml", 
+                        "~/{1}/{0}.vbhtml", 
+                        "~/Shared/{0}.cshtml",
+                        "~/Shared/{0}.vbhtml"
                     }).AsEnumerable();
                 }
             }
@@ -59,8 +61,10 @@ namespace AspNet.NoMvc.Mvc1
                 {
                     return (new List<string>
                     {
-                        "~/{2}/{1}/{0}.master", 
-                        "~/{2}/Shared/{0}.master"
+                        "~/{2}/{1}/{0}.cshtml", 
+                        "~/{2}/{1}/{0}.vbhtml", 
+                        "~/{2}/Shared/{0}.cshtml",
+                        "~/{2}/Shared/{0}.vbhtml"
                     }).AsEnumerable();
                 }
             }
@@ -71,10 +75,10 @@ namespace AspNet.NoMvc.Mvc1
                 {
                     return (new List<string>
                     {
-                        "~/{2}/{1}/{0}.aspx",
-                        "~/{2}/{1}/{0}.ascx",
-                        "~/{2}/Shared/{0}.aspx",
-                        "~/{2}/Shared/{0}.ascx"
+                        "~/{2}/{1}/{0}.cshtml", 
+                        "~/{2}/{1}/{0}.vbhtml", 
+                        "~/{2}/Shared/{0}.cshtml",
+                        "~/{2}/Shared/{0}.vbhtml"
                     }).AsEnumerable();
                 }
             }

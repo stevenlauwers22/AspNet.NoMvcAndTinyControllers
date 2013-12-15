@@ -14,7 +14,7 @@ namespace AspNet.TinyControllers.Mvc2.Sample.Areas.Administration
             context.MapRoute(
                 "Administration_default",
                 "Administration/{controller}/{action}/{id}",
-                new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                new { id = UrlParameter.Optional },
                 new[] { "AspNet.TinyControllers.Mvc2.Sample.Areas.Administration.Controllers" }
             );
         }

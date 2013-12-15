@@ -6,7 +6,7 @@ using System.Web.Routing;
 
 namespace AspNet.NoMvc.Mvc2
 {
-	public class NoMvcControllerFactory : DefaultControllerFactory
+    public class NoMvcControllerFactory : DefaultControllerFactory, INoMvcControllerFactory
     {
         private readonly INoMvcControllerNameResolver _controllerNameResolver;
 
@@ -92,11 +92,6 @@ namespace AspNet.NoMvc.Mvc2
                         return controllerTypeInDefaultNamespace;
                 }
             }
-
-            // If all else fails, search every namespace
-            var controllerTypeInAllNamespaces = base.GetControllerType(requestContext, controllerNameFormatted);
-            if (controllerTypeInAllNamespaces != null)
-                return controllerTypeInAllNamespaces;
 
             return base.GetControllerType(requestContext, controllerName);
 		}

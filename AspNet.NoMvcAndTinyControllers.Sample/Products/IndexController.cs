@@ -1,10 +1,10 @@
 ﻿using System.Web.Mvc;
-using AspNet.TinyControllers.Mvc2;
+using AspNet.NoMvc.Mvc2;
 
 namespace AspNet.NoMvcAndTinyController.Sample.Products
 {
     [HandleError]
-    public class IndexController : TinyController
+    public class IndexController : NoMvcTinyController
     {
         public ActionResult Get()
         {
