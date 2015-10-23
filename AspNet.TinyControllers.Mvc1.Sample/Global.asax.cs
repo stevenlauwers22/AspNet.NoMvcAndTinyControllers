@@ -24,11 +24,16 @@ namespace AspNet.TinyControllers.Mvc1.Sample
             RouteTable.Routes.MapRoute(
                 "Default",
                 "{controller}/{action}/{id}",
-                new { id = "" });
+                new { id = "" },
+                new[] { "AspNet.TinyControllers.Mvc1.Sample.Controllers" });
             RouteTable.Routes.MapRoute(
                 "Root",
                 "",
-                new { controller = "Home", action = "Index", id = "" });
+                new { controller = "Home", action = "Index", id = "" },
+                new[] { "AspNet.TinyControllers.Mvc1.Sample.Controllers" });
+
+            // If you don't specify the namespace when registering your routes, you should register a default namespace with the current controller builder
+            // ControllerBuilder.Current.DefaultNamespaces.Add("AspNet.TinyControllers.Mvc1.Sample.Controllers");
         }
 
         private static void RegisterControllerFactory()
