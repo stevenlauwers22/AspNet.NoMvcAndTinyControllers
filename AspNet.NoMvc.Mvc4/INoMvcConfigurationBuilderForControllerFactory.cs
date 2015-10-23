@@ -4,6 +4,8 @@ namespace AspNet.NoMvc.Mvc4
     {
         void DefaultNoMvc();
         void DefaultNoMvcWithControllerNameResolver(INoMvcControllerNameResolver controllerNameResolver);
+        void TinyNoMvc();
+        void TinyNoMvcWithControllerNameResolver(INoMvcControllerNameResolver controllerNameResolver);
         void Custom(INoMvcControllerFactory controllerFactory);
     }
 }

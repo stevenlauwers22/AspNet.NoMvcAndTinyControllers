@@ -1,4 +1,4 @@
-﻿namespace AspNet.NoMvcAndTinyController.Sample.Products
+﻿namespace AspNet.NoMvcAndTinyControllers.Sample.Home
 {
     public class IndexModel
     {

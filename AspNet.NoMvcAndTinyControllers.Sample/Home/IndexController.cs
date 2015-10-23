@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
 using AspNet.NoMvc.Mvc2;
 
-namespace AspNet.NoMvcAndTinyController.Sample.ShoppingCart
+namespace AspNet.NoMvcAndTinyControllers.Sample.Home
 {
     [HandleError]
     public class IndexController : NoMvcTinyController

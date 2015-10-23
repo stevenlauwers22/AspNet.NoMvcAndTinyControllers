@@ -3,35 +3,41 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using AspNet.NoMvc.Mvc2;
 
-namespace AspNet.NoMvcAndTinyController.Sample
+namespace AspNet.NoMvcAndTinyControllers.Sample
 {
 	public class MvcApplication : HttpApplication
 	{
 		protected void Application_Start()
 		{
 			RegisterRoutes();
-		    RegisterControllerFactory();
-            RegisterViewEngine();
-		}
+            RegisterNoMvc();
+        }
 
         private static void RegisterRoutes()
         {
             AreaRegistration.RegisterAllAreas();
             RouteTable.Routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             RouteTable.Routes.IgnoreRoute("{*favicon}", new { favicon = @"(.*/)?favicon.ico(/.*)?" });
-            RouteTable.Routes.MapRoute("Default", "{controller}/{action}/{id}", new { id = UrlParameter.Optional });
-            RouteTable.Routes.MapRoute("Root", "", new { controller = "Products", action = "Index", id = UrlParameter.Optional });
+            RouteTable.Routes.MapRoute(
+                "Default", 
+                "{controller}/{action}/{id}", 
+                new { id = UrlParameter.Optional },
+                new[] { "AspNet.NoMvcAndTinyControllers.Sample" });
+            RouteTable.Routes.MapRoute(
+                "Root",
+                "",
+                new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                new[] { "AspNet.NoMvcAndTinyControllers.Sample" });
+
+            // If you don't specify the namespace when registering your routes, you should register a default namespace with the current controller builder
+            // ControllerBuilder.Current.DefaultNamespaces.Add("AspNet.NoMvcAndTinyControllers.Sample");
         }
 
-        private static void RegisterControllerFactory()
+        private static void RegisterNoMvc()
         {
-            ControllerBuilder.Current.SetControllerFactory(new NoMvcTinyControllerFactory("AspNet.NoMvcAndTinyController.Sample"));
+            NoMvc.Mvc2.NoMvc.Configure()
+                .SetControllerFactory(cf => cf.TinyNoMvcWithControllerNameResolver(new NoMvcControllerNameUnderscoreResolver()))
+                .Apply();
         }
-
-	    private static void RegisterViewEngine()
-	    {
-	        ViewEngines.Engines.Clear();
-            ViewEngines.Engines.Add(new NoMvcWebFormViewEngine());
-	    }
 	}
 }

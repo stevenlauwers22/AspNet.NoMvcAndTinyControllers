@@ -10,8 +10,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AspNet.NoMvcAndTinyController.Sample</RootNamespace>
-    <AssemblyName>AspNet.NoMvcAndTinyController.Sample</AssemblyName>
+    <RootNamespace>AspNet.NoMvcAndTinyControllers.Sample</RootNamespace>
+    <AssemblyName>AspNet.NoMvcAndTinyControllers.Sample</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <FileUpgradeFlags>
@@ -25,6 +25,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -59,33 +60,34 @@
     <Compile Include="Accounts\ChangePasswordModel.cs" />
     <Compile Include="Accounts\RegisterModel.cs" />
     <Compile Include="Accounts\LogOnModel.cs" />
-    <Compile Include="Products\BrowseController.cs" />
-    <Compile Include="Products\BrowseModel.cs" />
-    <Compile Include="Products\CategoriesController.cs" />
-    <Compile Include="Products\CategoriesModel.cs" />
-    <Compile Include="Products\IndexController.cs" />
-    <Compile Include="Products\IndexModel.cs" />
-    <Compile Include="ShoppingCart\IndexController.cs" />
-    <Compile Include="ShoppingCart\IndexModel.cs" />
     <Compile Include="Accounts\IndexController.cs" />
     <Compile Include="Accounts\ChangePasswordController.cs" />
     <Compile Include="Accounts\ChangePasswordSuccessController.cs" />
     <Compile Include="Accounts\LogOffController.cs" />
     <Compile Include="Accounts\LogOnController.cs" />
     <Compile Include="Accounts\RegisterController.cs" />
+    <Compile Include="Administration\AdministrationAreaRegistration.cs" />
+    <Compile Include="Administration\Home\IndexController.cs" />
+    <Compile Include="Forum\ForumAreaRegistration.cs" />
+    <Compile Include="Forum\Home\_Controller.cs" />
+    <Compile Include="Forum\NewThread\IndexController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Home\IndexModel.cs" />
+    <Compile Include="Home\IndexController.cs" />
+    <Compile Include="Home\AboutController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Accounts\LogOff.aspx" />
-    <Content Include="Products\Browse.aspx" />
-    <Content Include="Products\Categories.aspx" />
-    <Content Include="Products\Index.aspx" />
-    <Content Include="ShoppingCart\Index.aspx" />
+    <Content Include="Administration\Home\Index.aspx" />
+    <Content Include="Forum\Home\Index.aspx" />
+    <Content Include="Forum\NewThread\Index.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Accounts\Index.aspx" />
+    <Content Include="Home\About.aspx" />
+    <Content Include="Home\Index.aspx" />
     <Content Include="Web.config" />
     <Content Include="Stylesheets\Site.css" />
     <Content Include="Accounts\ChangePassword.aspx" />

@@ -1,11 +1,7 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Shared/Site.master" Inherits="System.Web.Mvc.ViewPage<AspNet.NoMvcAndTinyController.Sample.Accounts.ChangePasswordModel>" %>
-
-<asp:Content ID="changePasswordTitle" ContentPlaceHolderID="TitleContent" runat="server">
-    Accounts
-</asp:Content>
+﻿<%@ Page Language="C#" MasterPageFile="~/Shared/Site.master" Inherits="System.Web.Mvc.ViewPage<AspNet.NoMvcAndTinyControllers.Sample.Accounts.ChangePasswordModel>" %>
 
 <asp:Content ID="changePasswordContent" ContentPlaceHolderID="MainContent" runat="server">
-    <h2>Change Password</h2>
+    <h2>Accounts - Change Password</h2>
     <p>
         Use the form below to change your password. 
     </p>

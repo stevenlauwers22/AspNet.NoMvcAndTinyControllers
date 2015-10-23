@@ -1,11 +1,7 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Shared/Site.master" Inherits="System.Web.Mvc.ViewPage<AspNet.NoMvcAndTinyController.Sample.Accounts.RegisterModel>" %>
-
-<asp:Content ID="registerTitle" ContentPlaceHolderID="TitleContent" runat="server">
-    Accounts
-</asp:Content>
+﻿<%@ Page Language="C#" MasterPageFile="~/Shared/Site.master" Inherits="System.Web.Mvc.ViewPage<AspNet.NoMvcAndTinyControllers.Sample.Accounts.RegisterModel>" %>
 
 <asp:Content ID="registerContent" ContentPlaceHolderID="MainContent" runat="server">
-    <h2>Register</h2>
+    <h2>Accounts - Register</h2>
     <p>
         Use the form below to create a new account. 
     </p>

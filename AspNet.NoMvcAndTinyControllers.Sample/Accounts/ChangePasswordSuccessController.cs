@@ -1,7 +1,7 @@
 using System.Web.Mvc;
 using AspNet.NoMvc.Mvc2;
 
-namespace AspNet.NoMvcAndTinyController.Sample.Accounts
+namespace AspNet.NoMvcAndTinyControllers.Sample.Accounts
 {
     [HandleError]
     public class ChangePasswordSuccessController : NoMvcTinyController

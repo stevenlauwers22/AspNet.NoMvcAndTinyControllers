@@ -38,7 +38,9 @@ namespace AspNet.NoMvc.Mvc1.Sample
 
         private static void RegisterNoMvc()
         {
-            NoMvc.Configure().Apply();
+            NoMvc.Configure()
+                .SetControllerFactory(cf => cf.DefaultNoMvcWithControllerNameResolver(new NoMvcControllerNameUnderscoreResolver()))
+                .Apply();
         }
 	}
 }

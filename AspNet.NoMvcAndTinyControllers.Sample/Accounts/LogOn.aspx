@@ -1,11 +1,7 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Shared/Site.master" Inherits="System.Web.Mvc.ViewPage<AspNet.NoMvcAndTinyController.Sample.Accounts.LogOnModel>" %>
-
-<asp:Content ID="loginTitle" ContentPlaceHolderID="TitleContent" runat="server">
-    Accounts
-</asp:Content>
+﻿<%@ Page Language="C#" MasterPageFile="~/Shared/Site.master" Inherits="System.Web.Mvc.ViewPage<AspNet.NoMvcAndTinyControllers.Sample.Accounts.LogOnModel>" %>
 
 <asp:Content ID="loginContent" ContentPlaceHolderID="MainContent" runat="server">
-    <h2>Log On</h2>
+    <h2>Accounts - Log On</h2>
     <p>
         Please enter your username and password. <%= Html.ActionLink("Register", "Accounts") %> if you don't have an account.
     </p>

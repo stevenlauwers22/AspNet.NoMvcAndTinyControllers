@@ -1,4 +1,4 @@
-namespace AspNet.NoMvcAndTinyController.Sample.Accounts
+namespace AspNet.NoMvcAndTinyControllers.Sample.Accounts
 {
     public class LogOnModel
     {
